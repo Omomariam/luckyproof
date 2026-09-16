@@ -1,0 +1,23 @@
+{
+  "name": "luckyproof",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check app.js && node --check chain.js && node --check server.mjs",
+    "test": "node --test tests/chain.test.mjs",
+    "test:browser": "playwright test",
+    "compile:contract": "node scripts/compile.mjs",
+    "deploy:testnet": "node scripts/deploy.mjs --broadcast",
+    "verify:testnet": "node scripts/verify.mjs"
+  },
+  "dependencies": {
+    "ethers": "^6.17.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "solc": "^0.8.24"
+  },
+  "type": "module"
+}

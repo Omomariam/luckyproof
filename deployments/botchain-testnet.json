@@ -1,0 +1,21 @@
+{
+  "chainId": 968,
+  "rpcUrl": "https://rpc.bohr.life",
+  "explorerUrl": "https://scan.bohr.life",
+  "address": "0xAf9e1820f44b9d98011687c23755cB4E134C543B",
+  "deployer": "0x2Db26e4DD0a63fb15A4c913774f10A004cf3a5D2",
+  "randomnessProvider": "0x0000000000000000000000000000000000000000",
+  "transactionHash": "0x53aa1da494333336aaabbc3a2253f33de52fa253c4fcf7d03e7cb0bc94576f28",
+  "compilerVersion": "0.8.24+commit.e11b9ed9",
+  "constructorArguments": "0000000000000000000000000000000000000000000000000000000000000000",
+  "status": "deployed",
+  "submittedAt": "2026-09-16T11:35:03.583Z",
+  "deploymentBlock": 23600118,
+  "gasUsed": "910430",
+  "verification": {
+    "status": "verified",
+    "guid": "af9e1820f44b9d98011687c23755cb4e134c543b6aaa7f02",
+    "verifiedAt": "2026-09-16T11:36:29.928Z",
+    "compilerVersion": "v0.8.24+commit.e11b9ed9"
+  }
+}
