@@ -12,10 +12,21 @@ test('workspace loads actual deployed testnet state without writing to chain', a
   });
   await page.addInitScript(()=>{window.ethereum={request:args=>window.readTestnetRpc(args),on(){},removeListener(){}};});
   await page.goto('/');await page.locator('[data-connect]').first().click();
-  await expect(page.locator('#chain-status')).toContainText('Draw creation and registration are live',{timeout:30000});
+  await expect(page.locator('#create-button')).toBeEnabled({timeout:30000});
+  await expect(page.locator('#workspace-status')).toBeHidden();
+  await expect(page.locator('#chain-status')).toBeHidden();
+  await page.locator('#network-details summary').click();
+  await expect(page.locator('#chain-status')).toBeVisible();
   await expect(page.locator('#chain-status a')).toHaveAttribute('href',new RegExp(record.address));
-  await expect(page.locator('#total-stat')).toHaveText('0');
+  await expect(page.locator('#total-stat')).toHaveText(/^\d[\d,]*$/);
   await expect(page.locator('#create-button')).toBeEnabled();
-  await expect(page.locator('#draw-grid')).toContainText('There are no draws in this deployed contract yet');
-  await expect(page.locator('#chain-status')).toContainText('Winner selection is disabled');
+  const count=Number((await page.locator('#total-stat').textContent()).replaceAll(',',''));
+  if(count) {
+    await expect(page.locator('.draw-card')).toHaveCount(count);
+    await page.locator('[data-open]').first().click();
+    await expect(page.locator('#dialog')).toContainText('Winner selection isn’t available yet.');
+  } else {
+    await expect(page.locator('#draw-grid')).toContainText('There are no draws in this deployed contract yet');
+  }
+  await expect(page.locator('#chain-status')).not.toContainText('Winner selection');
 });
